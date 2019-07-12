@@ -31,6 +31,14 @@ app.use(express.urlencoded({extended: false})); //Este middleware nos ayuda cuan
 
 app.use(express.json()); //Para entender las peticiones JSON que le hagan al servidor sin ningun formulario.
 
+//Routes
+app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.
+
+//Static Files
+app.use(express.static(path.join(__dirname, 'public'))); //Envia archivos estaticos 
+                                                         //(imagenes, css, html, js, etc).
+
+
 // Iniciar servidor
 app.listen(app.get('port'), () => {
     console.log('Servidor escuchando en el puerto: ', app.get('port'));
