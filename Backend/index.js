@@ -1,9 +1,15 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config(); //Este require sirve para leer archivos .env (variables de entorno).
+}
+
+
 const express = require('express'); //Se utiliza el framework express de node.
 const morgan = require('morgan'); //Nos permite ir viendo por consola lo que las aplicaciones 
                                   //cliente piden.
 const multer = require('multer'); //Este modulo nos sirve para procesar imágenes.
 const path = require('path'); //A traves de este modulo se le dice a la app the utilice la
                               //dirección actual de nuestro proyecto.
+const cors = require('cors'); //Permite la comunicación entre dos servidores.
 
 
 //Inicializaciones
@@ -11,7 +17,7 @@ const app = express();
 require('./database');
 
 //Configuracion
-app.set('port', 3000);
+app.set('port', process.env.PORT || 3000);
 
 //Middlewares
 app.use(morgan('dev')); //Usamos morgan como una funcion ya que todos los middlewares de express son funciones.
@@ -30,6 +36,7 @@ app.use(express.urlencoded({extended: false})); //Este middleware nos ayuda cuan
                                                 //permite interpretar los datos del formulario como JSON.
 
 app.use(express.json()); //Para entender las peticiones JSON que le hagan al servidor sin ningun formulario.
+app.use(cors()); //Comunicación entre servidores.
 
 //Rutas
 app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.

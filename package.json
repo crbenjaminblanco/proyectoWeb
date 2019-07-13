@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon backend/index.js --ignore FrontEnd",
+    "start": "cross-env NODE_ENV=production node backend/index.js",
     "build": "cross-env NODE_ENV=production webpack",
     "server:dev": "webpack-dev-server"
   },
