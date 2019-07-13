@@ -90,10 +90,117 @@
 /*!*************************!*\
   !*** ./FrontEnd/app.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _services_RecipeService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./services/RecipeService */ "./FrontEnd/services/RecipeService.js");
 
 __webpack_require__(/*! ./styles/app.css */ "./FrontEnd/styles/app.css");
+
+ // Podemos hacer esto gracias a Webpack.
+
+// Aqui se obtiene por el id del formulario todos los datos que ingresa el usuario a traves de los inputs del Form en el index.html.
+document.getElementById('recipe-form')
+    .addEventListener('submit', e => { // Funcion flecha.
+    const title = document.getElementById('title').value;
+    const ingredients = document.getElementById('ingredients').value;
+    const instructions = document.getElementById('instructions').value;
+    const image = document.getElementById('image').files;
+
+    console.log(title, ingredients, instructions, image);
+
+    // Los datos de la receta se quieren enviar por post, pero este metodo en RecipeService
+    // solo recibe un objeto por parametro, por lo tanto se crea un Formdata para poder enviarlo a partir 
+    // de los datos recopilados por getElementById de arriba.
+    const formData = new FormData(); // Es un formulario virtual de JS.
+    formData.append('image', image[0]);
+    formData.append('title', title);
+    formData.append('ingredients', ingredients);
+    formData.append('instructions', instructions);
+
+    const recipeService = new _services_RecipeService__WEBPACK_IMPORTED_MODULE_0__["default"]();
+    recipeService.postRecipe(formData);
+
+    e.preventDefault(); // Cuando se envia el formulario ya no se reinicia.
+
+});
+
+/***/ }),
+
+/***/ "./FrontEnd/services/RecipeService.js":
+/*!********************************************!*\
+  !*** ./FrontEnd/services/RecipeService.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+/**
+ * Clase con metodos para reutilizar.
+ */
+class RecipeService {
+
+    /**
+     * Constructor tipico de una clase que se ejecuta
+     * cuando la clase se instancia.   
+     */
+    constructor() {
+        this.URI = 'http://localhost:3000/api/recipes'; // Direccion de donde esta mi API.
+    }
+
+    /**
+     * Este metodo hace una peticion get a localhost:3000/api/recipes
+     * para obtener datos.
+     * Esto puede tardar tiempo por lo que se hace el metodo async.
+     */
+    async getRecipe() { 
+        const response = await fetch(this.URI); // Peticion get al backend que devuelve string.
+        const recipes = await response.json(); // Conversion de ese string a JSON.
+        return recipes;
+    }
+
+    /**
+     * Este metodo envia una peticion post al backend.
+     * Debe recibir los datos que se van a enviar al backend para que los guarde.
+     * @param {*} recipe 
+     */
+    async postRecipe(recipe) {
+        // En este fetch coloco los header para decirle al backend que es lo que estoy enviando.
+        const response = await fetch(this.URI, {
+            method: 'POST',
+            body: recipe
+        });
+        const data = await response.json();
+
+        console.log(data);
+    }
+
+    /**
+     * Este metodo elimina la receta en el backend.
+     * Se le manda por parametro el id de la receta para que lo encuentre, igual
+     * que en el recipes.js de routes en el backend.
+     * Esto porque desde el frontend se debe enviar el id que se quiere eliminar.
+     * @param {*} recipeId 
+     */
+    async deleteRecipe(recipeId) {
+        const response = await fetch(`${this.URI}/${recipeId}`, { // Esto lo envia al backend
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'DELETE'
+        });
+        const data = await response.json();
+
+        console.log(data);
+    }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (RecipeService);
+
 
 /***/ }),
 

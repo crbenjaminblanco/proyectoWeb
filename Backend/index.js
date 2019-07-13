@@ -24,7 +24,7 @@ app.use(morgan('dev')); //Usamos morgan como una funcion ya que todos los middle
 const storage = multer.diskStorage({
     destination: path.join(__dirname, 'public/uploads'), //en esta dir se guardan las imagenes.
     filename(req, file, cb){ //nombre para los archivos de las imagenes.
-        cb(null, new Date.getTime() + path.extname(file.originalname));
+        cb(null, new Date().getTime() + path.extname(file.originalname));
     } 
 })
 app.use(multer({storage}).single('image')); //usamos el middleware multer, con su config respectiva en la

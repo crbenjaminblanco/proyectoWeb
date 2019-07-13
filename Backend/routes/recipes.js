@@ -11,7 +11,8 @@ router.get('/', async (req, res) => { //Con get recuperamos todas las recetas.
 
 router.post('/', async(req, res) => { //Utilizamos post para enviar nuevas recetas.
     const { title, ingredients, instructions } = req.body; //req body es lo que se recibe en el post.
-    const newRecipe = new Recipe({title, ingredients, instructions}); //creamos una nueva receta con el modelo.
+    const imagePath = '/uploads' + req.file.filename; // Para guardar la imagen.
+    const newRecipe = new Recipe({title, ingredients, instructions, imagePath}); //creamos una nueva receta con el modelo.
     console.log(newRecipe);
     await newRecipe.save(); //Se guarda la receta en la base de datos MongoDB.
     res.json({message: 'Recipe saved'});
