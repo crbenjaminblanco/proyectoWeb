@@ -7,10 +7,10 @@ const path = require('path'); //A traves de este modulo se le dice a la app the 
 
 
 //Inicializaciones
-
 const app = express();
+require('./database');
 
-//Settings
+//Configuracion
 app.set('port', 3000);
 
 //Middlewares
@@ -31,10 +31,10 @@ app.use(express.urlencoded({extended: false})); //Este middleware nos ayuda cuan
 
 app.use(express.json()); //Para entender las peticiones JSON que le hagan al servidor sin ningun formulario.
 
-//Routes
+//Rutas
 app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.
 
-//Static Files
+//Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public'))); //Envia archivos estaticos 
                                                          //(imagenes, css, html, js, etc).
 
