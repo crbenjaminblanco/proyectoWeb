@@ -10,6 +10,7 @@ const multer = require('multer'); //Este modulo nos sirve para procesar imágene
 const path = require('path'); //A traves de este modulo se le dice a la app the utilice la
                               //dirección actual de nuestro proyecto.
 const cors = require('cors'); //Permite la comunicación entre dos servidores.
+const session = require('express-session'); //Permite guardar los datos de los usuarios a traves de una sesión. 
 
 
 //Inicializaciones
@@ -37,9 +38,15 @@ app.use(express.urlencoded({extended: false})); //Este middleware nos ayuda cuan
 
 app.use(express.json()); //Para entender las peticiones JSON que le hagan al servidor sin ningun formulario.
 app.use(cors()); //Comunicación entre servidores.
+app.use(session({ //Configuraciones básicas que permiten almacenar los datos del usuario temporalmente.
+    secret: 'mysecretapp',
+    resave: true,
+    saveUninitialized: true
+}))
 
 //Rutas
 app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.
+app.use(require('./routes/users')); // Rutas para manejar usuarios.
 
 //Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public'))); //Envia archivos estaticos 
