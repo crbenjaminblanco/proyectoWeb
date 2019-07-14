@@ -63,15 +63,26 @@ class UI {
     /**
      * Metodo para renderizar un msj.
      */
-    renderMessage() {
+    renderMessage(message, colorMessage, secondsToRemove) {
+        const div = document.createElement('div');
+        div.className = `alert alert-${colorMessage} message`;
+        div.appendChild(document.createTextNode(message));
 
+        const container = document.querySelector('.col-md-4');
+        const recipeForm = document.querySelector('#recipe-form');
+
+        container.insertBefore(div, recipeForm); // Coloca el msj entre el form y el col-md-4.
+        setTimeout(() => {
+            document.querySelector('.message').remove(); // Todos los elementos que tengan clase "message" seran removidos.
+        }, secondsToRemove);
     }
 
     /**
      * Eliminar un elemento de la pantalla.
      */
-    deleteRecipe() {
-
+    async deleteRecipe(recipeId) {
+        await recipeService.deleteRecipe(recipeId);
+        this.renderRecipes();
     }
 }
 

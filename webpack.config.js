@@ -19,7 +19,7 @@ module.exports = {
         path: path.join(__dirname, 'Backend/public'),
         filename: 'js/bundle.js' // Nombre del archivo generado.
     }, 
-    mode: 'development',
+    mode: 'production',
 
     // Modulos para cargar estilos dentro del JS.
     // En produccion se quiere q los archivos de CSS esten en los de CSS 

@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const router = Router(); //Este enrutador sirve para definir las rutas del servidor.
+const {unlink} = require('fs-extra');
+const path = require('path');
 
 const Recipe = require('../models/Recipe');
 
@@ -20,6 +22,7 @@ router.post('/', async(req, res) => { //Utilizamos post para enviar nuevas recet
 
 router.delete('/:id', async (req, res) => { //Usamos delete para borrar una receta utilizando su id.
     const recipe = await Recipe.findByIdAndDelete(req.params.id);
+    unlink(path.resolve('./Backend/public' + recipe.imagePath)); // Modulo fs-extra que maneja archivos para eliminar las imagenes que quedan en el proyecto.
     console.log(recipe);
     res.json({message: 'Recipe deleted'});
 });

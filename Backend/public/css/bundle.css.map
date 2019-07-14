@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"css/bundle.css","sourcesContent":[],"sourceRoot":""}
+{"version":3,"sources":["webpack:///./FrontEnd/styles/app.css"],"names":[],"mappings":"AAAA;AACA;AACA,C","file":"css/bundle.css","sourcesContent":[".bg-company-red {\r\n    background-color: darkred !important;\r\n}"],"sourceRoot":""}

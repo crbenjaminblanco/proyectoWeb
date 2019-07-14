@@ -30,7 +30,20 @@ document.getElementById('recipe-form')
 
     const ui = new UI();
     ui.addNewRecipe(formData);
+    ui.renderMessage('New Recipe Added', 'success', 3000);
 
     e.preventDefault(); // Cuando se envia el formulario ya no se reinicia.
 
+});
+
+// Eliminar datos.
+document.getElementById('recipes-cards').addEventListener('click', e => {
+    // Quiero comprobar que solo capture el click en el boton de delete.
+    if (e.target.classList.contains('delete')) { // Para que solo capture el evento que tiene un delete. 
+        //console.log(e.target.getAttribute('_id'));
+        const ui = new UI();
+        ui.deleteRecipe(e.target.getAttribute('_id')); // Se encarga de eliminar
+        ui.renderMessage('Recipe Removed', 'danger', 2000);
+    }
+    e.preventDefault();
 });
