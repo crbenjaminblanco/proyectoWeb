@@ -1,7 +1,13 @@
 
 require('./styles/app.css');
 
-import RecipeService from './services/RecipeService'; // Podemos hacer esto gracias a Webpack.
+import UI from './UI';
+
+// Evento: Una vez el navegador haya pintado la interfaz (DOM haya sido cargado) me traigo los datos desde el backend.
+document.addEventListener('DOMContentLoaded', () => {
+    const ui = new UI();
+    ui.renderRecipes();
+});
 
 // Aqui se obtiene por el id del formulario todos los datos que ingresa el usuario a traves de los inputs del Form en el index.html.
 document.getElementById('recipe-form')
@@ -22,8 +28,8 @@ document.getElementById('recipe-form')
     formData.append('ingredients', ingredients);
     formData.append('instructions', instructions);
 
-    const recipeService = new RecipeService();
-    recipeService.postRecipe(formData);
+    const ui = new UI();
+    ui.addNewRecipe(formData);
 
     e.preventDefault(); // Cuando se envia el formulario ya no se reinicia.
 
