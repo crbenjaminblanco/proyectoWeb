@@ -53,6 +53,30 @@ module.exports = {
                 useShortDoctype: true
             }
         }),
+        new HtmlWebpackPlugin({
+            filename: 'signup.html',
+            template: './Frontend/signup.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'signin.html',
+            template: './Frontend/signin.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/bundle.css' // Nombre del archivo generado.
         })
@@ -61,14 +85,3 @@ module.exports = {
     // Cuando estoy en modo "desarrollo" quiero saber en que linea de codigo me equivoco.
     devtool: 'source-map'
 };
-
-// NOTA 1: 
-// Para generar codigo se usa el comando: npx webpack
-// Para correr servidor se usa el comando: npm run dev
-
-//NOTA 2:
-// Para correr el programa en modo "production" se usa: npm run build.
-
-//NOTA 3:
-// Para correrlo en el puerto 8080 y que se compile automaticamente se puso un script en package JSON.
-// Para esto se usa: npm run server:dev 
