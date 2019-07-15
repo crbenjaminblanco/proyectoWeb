@@ -14,10 +14,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-    entry: './FrontEnd/app.js', // Aqui se le dice donde esta el archivo principal del proyecto.
+    entry:{
+         app: './FrontEnd/app.js',
+         users: './FrontEnd/UIusers.js'
+    }, // Aqui se le dice donde esta el archivo principal del proyecto.
     output: { // Aqui se le dice donde se va a colocar el codigo convertido.
         path: path.join(__dirname, 'Backend/public'),
-        filename: 'js/bundle.js' // Nombre del archivo generado.
+        filename: 'js/[name].js' // Nombre del archivo generado.
     }, 
     mode: 'production',
 
@@ -44,6 +47,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './Frontend/index.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['app'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -54,8 +58,9 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'signup.html',
-            template: './Frontend/signup.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            filename: 'signup.hbs',
+            template: './Frontend/signup.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['users'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -66,8 +71,22 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'signin.html',
-            template: './Frontend/signin.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            filename: 'signin.hbs',
+            template: './Frontend/signin.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['users'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'main.hbs',
+            template: './Frontend/main.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['users'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,

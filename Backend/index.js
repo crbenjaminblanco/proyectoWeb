@@ -12,6 +12,7 @@ const path = require('path'); //A traves de este modulo se le dice a la app the 
 const cors = require('cors'); //Permite la comunicación entre dos servidores.
 const session = require('express-session'); //Permite guardar los datos de los usuarios a traves de una sesión. 
 const flash = require('connect-flash'); //Permite enviar mensajes entre multiples vistas.
+const exphbs = require('express-handlebars'); //Nos permite usar el motor de plantillas handlebars.
 
 //Inicializaciones
 const app = express();
@@ -19,6 +20,13 @@ require('./database');
 
 //Configuracion
 app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'public'));
+app.engine('.hbs', exphbs({
+    defaultLayout: 'main',
+    layoutsDir: path.join(__dirname, 'public'),
+    extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
 
 //Middlewares
 app.use(morgan('dev')); //Usamos morgan como una funcion ya que todos los middlewares de express son funciones.

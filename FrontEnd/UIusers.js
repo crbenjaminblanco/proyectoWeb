@@ -17,13 +17,6 @@ function renderMessage(message, colorMessage, secondsToRemove) {
     }, secondsToRemove);
 }
 
-    // Eliminar datos.
 document.getElementById('signupbtn').addEventListener('click', e => {
 
-    const response = await fetch("localhost:3000/signup"); // Peticion get al backend que devuelve string.
-    const errores = await response.json(); // Conversion de ese string a JSON.
-    // Quiero comprobar que solo capture el click en el boton de delete.
-    renderMessage('errores', 'danger', 2000);
-    
-    e.preventDefault();
 });
