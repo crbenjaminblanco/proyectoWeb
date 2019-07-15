@@ -11,7 +11,7 @@ const path = require('path'); //A traves de este modulo se le dice a la app the 
                               //dirección actual de nuestro proyecto.
 const cors = require('cors'); //Permite la comunicación entre dos servidores.
 const session = require('express-session'); //Permite guardar los datos de los usuarios a traves de una sesión. 
-
+const flash = require('connect-flash'); //Permite enviar mensajes entre multiples vistas.
 
 //Inicializaciones
 const app = express();
@@ -42,7 +42,15 @@ app.use(session({ //Configuraciones básicas que permiten almacenar los datos de
     secret: 'mysecretapp',
     resave: true,
     saveUninitialized: true
-}))
+}));
+app.use(flash());
+
+//Variables Globales
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg'); //Variable global que guarda los mensajes de exito de flash.
+    res.locals.error_msg = req.flash('error_msg'); //Variable global que guarda los mensajes de error de flash.
+    next();
+});
 
 //Rutas
 app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.

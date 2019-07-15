@@ -24,8 +24,9 @@ router.post('/signup', async (req, res) => {
     if (password.length < 4) { errors.push({text: 'Password must be at least 4 characters'}); }
 
     if (errors.length > 0) {
-        res.send('error'); // TODO: volver a mostrar la pagina con la lista de errores. 2:11:55 del video. Ver 2:17:12
-    } else { // TODO: se encicla
+        res.render('/signup', {errors, name, email, password, confirm_password}); // TODO: volver a mostrar la pagina con la lista de errores. 2:11:55 del video. Ver 2:17:12
+        //res.redirect('/signup', errors);
+    } else {
         const emailUser = await User.findOne({email: email});
         if (emailUser) {
             req.flash('error_msg', 'The email is already in use');
@@ -34,7 +35,7 @@ router.post('/signup', async (req, res) => {
         const newUser = new User({name, email, password});
         newUser.password = await newUser.encryptPassword(password);
         await newUser.save();
-        req.flash('success_msg', 'You are registered');
+        req.flash('success_msg', 'Success!');
         res.redirect('/signin');
     }
 });
