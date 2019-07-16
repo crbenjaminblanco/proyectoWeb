@@ -68,9 +68,11 @@ app.use((req, res, next) => {
 
 //Rutas
 app.use('/api/recipes', require('./routes/recipes')); // Las rutas del servidor proporcionaran rest APIs.
+app.use(require('./routes/myRecipes')); //Ruta para ver mis recetas.
 app.use(require('./routes/users')); // Rutas para manejar usuarios.
 app.use(require('./routes/about')); // Ruta para la pantalla about. 
 app.use(require('./routes/features')); // Ruta para la pantalla features. 
+app.use(require('./routes/homePage')); // Ruta para la pantalla home.
 
 //Archivos Estaticos
 app.use(express.static(path.join(__dirname, 'public'))); // Envia archivos estaticos 

@@ -47,7 +47,8 @@ module.exports = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            template: './Frontend/index.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            filename: 'myRecipes.hbs',
+            template: './Frontend/myRecipes.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
             chunks: ['app'],
             minify: {
                 collapseWhitespace: true,
@@ -126,6 +127,19 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'features.hbs',
             template: './Frontend/features.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['about'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'homePage.hbs',
+            template: './Frontend/homePage.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
             chunks: ['about'],
             minify: {
                 collapseWhitespace: true,
