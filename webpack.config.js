@@ -123,6 +123,19 @@ module.exports = {
                 useShortDoctype: true
             }
         }),
+        new HtmlWebpackPlugin({
+            filename: 'features.hbs',
+            template: './Frontend/features.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['about'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
         new MiniCssExtractPlugin({
             filename: 'css/bundle.css' // Nombre del archivo generado.
         })
