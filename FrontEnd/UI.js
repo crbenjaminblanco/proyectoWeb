@@ -31,7 +31,9 @@ class UI {
                                <p class="card-text">${recipe.ingredients}</p>
                                <h5>Instructions:</h5>
                                <p class="card-text">${recipe.instructions}</p>
-                               <a href="#" class="btn btn-primary delete" _id="${recipe._id}"><h3>🗑</h3></a>
+                               <a href="#" class="btn btn-primary delete" _id="${recipe._id}">
+                                <h3 class="delete" _id="${recipe._id}">🗑</h3>
+                               </a>
                             </div>
                         </div>
                     </div>

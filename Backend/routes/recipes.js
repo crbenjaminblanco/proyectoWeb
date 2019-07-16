@@ -5,6 +5,7 @@ const path = require('path');
 
 const Recipe = require('../models/Recipe');
 
+
 router.get('/', async (req, res) => { //Con get recuperamos todas las recetas.
     const recipes = await Recipe.find() //Este find busca todas las recetas de la base de datos. 
                         //Es como un select * en SQL.
