@@ -13,10 +13,12 @@ const cors = require('cors'); //Permite la comunicación entre dos servidores.
 const session = require('express-session'); //Permite guardar los datos de los usuarios a traves de una sesión. 
 const flash = require('connect-flash'); //Permite enviar mensajes entre multiples vistas.
 const exphbs = require('express-handlebars'); //Nos permite usar el motor de plantillas handlebars.
+const passport = require('passport'); // Ayuda a guardar los datos de una sesión.
 
 //Inicializaciones
 const app = express();
 require('./database');
+require('./config/passport');
 
 //Configuracion
 app.set('port', process.env.PORT || 3000);
@@ -52,12 +54,15 @@ app.use(session({ //Configuraciones básicas que permiten almacenar los datos de
     resave: true,
     saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 //Variables Globales
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg'); //Variable global que guarda los mensajes de exito de flash.
     res.locals.error_msg = req.flash('error_msg'); //Variable global que guarda los mensajes de error de flash.
+    res.locals.error = req.flash('error'); //Variable global que guarda los mensajes de error de flash.
     next();
 });
 

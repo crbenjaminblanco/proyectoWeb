@@ -1,11 +1,17 @@
 const express = require('express');
-const router = express.Router();    
-var path = require('path');
+const router = express.Router();
 const User = require('../models/User');
+const passport = require('passport');
 
 router.get('/signin', (req, res) => {
     res.render('signin');
 });
+
+router.post('/signin', passport.authenticate('local', {
+    successRedirect: '/', //si la autenticación se dio con exito, se redirecciona a la pantalla principal.
+    failureRedirect: '/signin', //si la autenticacion fallo, se redirecciona a la pantalla de signin.
+    failureFlash: true
+}));
 
 router.get('/signup', (req, res) => {
     res.render('signup');
@@ -24,8 +30,7 @@ router.post('/signup', async (req, res) => {
     if (password.length < 4) { errors.push({text: 'Password must be at least 4 characters'}); }
 
     if (errors.length > 0) {
-        res.render('signup', {errors, name, email, password, confirm_password}); // TODO: volver a mostrar la pagina con la lista de errores. 2:11:55 del video. Ver 2:17:12
-        //res.redirect('/signup', errors);
+        res.render('signup', {errors, name, email, password, confirm_password});
     } else {
         const emailUser = await User.findOne({email: email});
         if (emailUser) {
