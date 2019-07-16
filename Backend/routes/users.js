@@ -8,7 +8,7 @@ router.get('/signin', (req, res) => {
 });
 
 router.post('/signin', passport.authenticate('local', {
-    successRedirect: '/', //si la autenticación se dio con exito, se redirecciona a la pantalla principal.
+    successRedirect: '/myRecipes', //si la autenticación se dio con exito, se redirecciona a la pantalla principal.
     failureRedirect: '/signin', //si la autenticacion fallo, se redirecciona a la pantalla de signin.
     failureFlash: true
 }));
@@ -44,6 +44,11 @@ router.post('/signup', async (req, res) => {
             res.redirect('/signin');
         }
     }
+});
+
+router.get('/logout', (req, res) => {
+   req.logout();
+   res.redirect('/');
 });
 
 module.exports = router;

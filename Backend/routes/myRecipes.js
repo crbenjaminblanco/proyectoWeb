@@ -1,7 +1,9 @@
 const express = require('express');
-const router = express.Router();   
+const router = express.Router();
 
-router.get('/myRecipes', (req, res) => {
+const { isAuthenticated } = require('../helpers/auth');
+
+router.get('/myRecipes', isAuthenticated, (req, res) => {
     res.render('myRecipes');
 });
 
