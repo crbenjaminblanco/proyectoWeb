@@ -16,7 +16,8 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     entry:{
          app: './FrontEnd/app.js',
-         usersUI: './FrontEnd/usersUI.js'
+         usersUI: './FrontEnd/usersUI.js',
+         about: './FrontEnd/about.js'
     }, // Aqui se le dice donde esta el archivo principal del proyecto.
     output: { // Aqui se le dice donde se va a colocar el codigo convertido.
         path: path.join(__dirname, 'Backend/public'),
@@ -110,8 +111,8 @@ module.exports = {
             }
         }),
         new HtmlWebpackPlugin({
-            filename: 'about.html',
-            template: './Frontend/about.html',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            filename: 'about.hbs',
+            template: './Frontend/about.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
             chunks: ['about'],
             minify: {
                 collapseWhitespace: true,
