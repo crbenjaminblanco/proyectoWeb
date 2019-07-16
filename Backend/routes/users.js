@@ -29,14 +29,15 @@ router.post('/signup', async (req, res) => {
     } else {
         const emailUser = await User.findOne({email: email});
         if (emailUser) {
-            req.flash('error_msg', 'The email is already in use');
+            req.flash('error_msg', 'The email is already in use. Please try with another email.');
             res.redirect('/signup');
+        } else {
+            const newUser = new User({name, email, password});
+            newUser.password = await newUser.encryptPassword(password);
+            await newUser.save();
+            req.flash('success_msg', 'Registered successfully!');
+            res.redirect('/signin');
         }
-        const newUser = new User({name, email, password});
-        newUser.password = await newUser.encryptPassword(password);
-        await newUser.save();
-        req.flash('success_msg', 'Success!');
-        res.redirect('/signin');
     }
 });
 

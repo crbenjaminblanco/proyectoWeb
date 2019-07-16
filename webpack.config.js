@@ -16,8 +16,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     entry:{
          app: './FrontEnd/app.js',
-         users: './FrontEnd/UIusers.js',
-         about: './FrontEnd/about.js'
+         usersUI: './FrontEnd/usersUI.js'
     }, // Aqui se le dice donde esta el archivo principal del proyecto.
     output: { // Aqui se le dice donde se va a colocar el codigo convertido.
         path: path.join(__dirname, 'Backend/public'),
@@ -61,7 +60,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'signup.hbs',
             template: './Frontend/signup.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
-            chunks: ['users'],
+            chunks: ['usersUI'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -74,7 +73,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'signin.hbs',
             template: './Frontend/signin.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
-            chunks: ['users'],
+            chunks: ['usersUI'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
@@ -87,7 +86,20 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'main.hbs',
             template: './Frontend/main.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
-            chunks: ['users'],
+            chunks: ['usersUI'],
+            minify: {
+                collapseWhitespace: true,
+                removeComments: true,
+                removeRedundantAttributes: true,
+                removeScriptTypeAttributes: true,
+                removeStyleLinkAttributes: true,
+                useShortDoctype: true
+            }
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'messages.hbs',
+            template: './Frontend/messages.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
+            chunks: ['usersUI'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,
