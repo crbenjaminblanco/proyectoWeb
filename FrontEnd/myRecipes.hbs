@@ -14,17 +14,17 @@
             </h3>
             <form id="recipe-form" class="card card-body">
                 <div class="form-group">
-                    <input type="text" id="title" class="form-control" placeholder="Recipe title">
+                    <input type="text" id="title" class="form-control" placeholder="Recipe title" required>
                 </div>
                 <div class="form-group">
-                    <textarea type="text" id="ingredients" class="form-control" placeholder="Ingredients" rows="5" cols="30"></textarea>
+                    <textarea type="text" id="ingredients" class="form-control" placeholder="Ingredients" rows="5" cols="30" required></textarea>
                 </div>
                 <div class="form-group">
-                    <textarea type="text" id="instructions" class="form-control" placeholder="Instructions" rows="5" cols="30"></textarea>
+                    <textarea type="text" id="instructions" class="form-control" placeholder="Instructions" rows="5" cols="30" required></textarea>
                 </div>
                 <div class="input-group mb-3">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="image">
+                        <input type="file" class="custom-file-input" id="image" required>
                         <label for="image" id="labelImage" class="custom-file-label">
                             Choose Image
                         </label>

@@ -34,6 +34,8 @@ class UI {
                                <a href="#" class="btn btn-primary delete" _id="${recipe._id}">
                                 <h3 class="delete" _id="${recipe._id}">🗑</h3>
                                </a>
+                               <br>
+                               <br>
                             </div>
                         </div>
                     </div>

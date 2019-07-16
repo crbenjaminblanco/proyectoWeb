@@ -14,6 +14,7 @@ const session = require('express-session'); //Permite guardar los datos de los u
 const flash = require('connect-flash'); //Permite enviar mensajes entre multiples vistas.
 const exphbs = require('express-handlebars'); //Nos permite usar el motor de plantillas handlebars.
 const passport = require('passport'); // Ayuda a guardar los datos de una sesión.
+const favicon = require('serve-favicon'); //Para el favicon.
 
 //Inicializaciones
 const app = express();
@@ -57,6 +58,7 @@ app.use(session({ //Configuraciones básicas que permiten almacenar los datos de
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 //Variables Globales
 app.use((req, res, next) => {

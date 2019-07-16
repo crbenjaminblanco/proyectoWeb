@@ -37,11 +37,22 @@
 .dropdownNotes{
     background-color:darkRed !important;
     border:none;
-    color: white !important;
+    color: gold !important;
     font-weight: bold;
     width:100%;
     text-align: center;
 
+}
+
+.hrStyle{ 
+    height: 1px;
+    color: darkRed;
+    background-color: darkRed;
+    border: none;
+  }
+
+.dropdownNotes:hover{
+    opacity:0.7;
 }
 
 .dropdownNotes:active{

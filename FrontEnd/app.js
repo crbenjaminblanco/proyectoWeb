@@ -48,7 +48,12 @@ document.getElementById('recipes-cards').addEventListener('click', e => {
     e.preventDefault();
 });
 
-document.getElementById('')
-
+document.getElementById('image').addEventListener('change', e => {
     /*Hacer que aparezca el titulo*/
+    const labelImage = document.getElementById('labelImage');
     const image = document.getElementById('image').files;
+    /*Elimina el path*/
+    var fileName=image[0].name;
+    fileName=fileName.split(/(\\|\/)/g).pop();
+    labelImage.innerHTML=fileName;
+});
