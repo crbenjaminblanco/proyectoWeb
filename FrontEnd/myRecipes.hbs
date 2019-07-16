@@ -2,6 +2,14 @@
     <div class="row">
         <div class="col-md-4">
             <h3 style="text-align: center; color: black">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Welcome {{user.name}}!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </h3>
+            <h3 style="text-align: center; color: black">
                 Add new recipe!
             </h3>
             <form id="recipe-form" class="card card-body">
@@ -9,15 +17,15 @@
                     <input type="text" id="title" class="form-control" placeholder="Recipe title">
                 </div>
                 <div class="form-group">
-                    <input type="text" id="ingredients" class="form-control" placeholder="Ingredients">
+                    <textarea type="text" id="ingredients" class="form-control" placeholder="Ingredients" rows="5" cols="30"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="instructions" class="form-control" placeholder="Instructions">
+                    <textarea type="text" id="instructions" class="form-control" placeholder="Instructions" rows="5" cols="30"></textarea>
                 </div>
                 <div class="input-group mb-3">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image">
-                        <label for="image" class="custom-file-label">
+                        <label for="image" id="labelImage" class="custom-file-label">
                             Choose Image
                         </label>
                     </div>

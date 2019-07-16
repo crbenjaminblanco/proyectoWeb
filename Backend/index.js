@@ -63,6 +63,7 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg'); //Variable global que guarda los mensajes de exito de flash.
     res.locals.error_msg = req.flash('error_msg'); //Variable global que guarda los mensajes de error de flash.
     res.locals.error = req.flash('error'); //Variable global que guarda los mensajes de error de flash.
+    res.locals.user = req.user || null; // Variable global que almacena al usuario.
     next();
 });
 

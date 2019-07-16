@@ -47,3 +47,8 @@ document.getElementById('recipes-cards').addEventListener('click', e => {
     }
     e.preventDefault();
 });
+
+document.getElementById('')
+
+    /*Hacer que aparezca el titulo*/
+    const image = document.getElementById('image').files;

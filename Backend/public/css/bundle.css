@@ -34,9 +34,22 @@
     color: rgba(255,255,255,0.7)  !important;
 }
 
+.dropdownNotes{
+    background-color:darkRed !important;
+    border:none;
+    color: white !important;
+    font-weight: bold;
+    width:100%;
+    text-align: center;
+
+}
+
+.dropdownNotes:active{
+    border: none !important; 
+}
 
 .current{
-    color: black !important;
+    color: #000000 !important;
 }
 
 /*Estilo del Sign-In*/

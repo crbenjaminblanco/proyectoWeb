@@ -19,12 +19,12 @@
 
 <body>
     <!--Navigation Bar-->
-    <div class="header">
-        <div class="container">
-            <div class="row">
-                <div class="logo col-4 vertical-align align-items-center" >
-                    <a class="navbar-brand " href="/"><h3 class="cookLink">CookingArt</h3></a>
-                 </div>
+           <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="logo col-4 vertical-align align-items-center" >
+                        <a  id ="muro" class="navbar-brand " href="/"><h3 class="cookLink">CookingArt</h3></a>
+                    </div>
                 <div class="right-header col-8">
                     <div class="d-flex justify-content-end">
                         <nav class="navbar navbar-default  navbar-expand-lg">
@@ -34,39 +34,44 @@
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
                                         <span class="icon-bar"></span>
-                                    </button>
-                                </div>  <!-- Fin del encabezado-->
-                                <div  class="navbar-collapse collapse in navbar-toggleable-xm" id="mydropdown"> <!--Inicio del collapse-->   
-                                    <ul class="nav navbar-nav">
-                                        <li><a href="/" class="nav-link aPrincipal current">Home</a></li> 
-                                        <li><a href="/features" class="nav-link aPrincipal">Features</a></li>
-                                        <li><a href="/about" class="nav-link aPrincipal">About Us</a></li>
-                                        <div class="signIn-Background current "> <!--Espacio para el SignIn-->
-                                            <div class="signIn bg-company-white d-flex align-items-center">
-                                                <li><a href="/signup">Sign Up</a></li>
-                                                <span class="text-red">&nbsp/&nbsp</span> 
-                                                <li><a href="/signin">Login</a></li> 
-                                            </div>
-                                        </div> <!--Fin del singIn Background-->
-                                        <div class="dropdown"> <!--Inicio del dropdown-->
-                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                                Recipes
-                                                <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu"> 
-                                                <li><a href="/myRecipes">My recipes</a></li>
-                                                <li><a href="/logout">Log out</a></li>
-                                            </ul>
-                                        </div> <!--Fin del dropdown-->
-                                    </ul> <!--Fin de UL-->
-                                </div> <!--End of Collapse-->
-                            </div> <!--End of container-->
-                        </nav>
-                    </div> <!--End of flex-right-->
-                </div> <!--End of rightHeader-->
-            </div> <!--End of row-->
-        </div> <!--End of container-->
-    </div><!--End of header-->
+                                        </button>
+                                    </div>  <!-- Fin del encabezado-->
+                                    <div  class="navbar-collapse collapse in navbar-toggleable-xm " id="mydropdown"> <!--Inicio del collapse-->   
+                                        <ul class="nav navbar-nav  d-flex align-items-center">
+                                            <li><a id="home"href="/" class="nav-link aPrincipal current">Home</a></li> 
+                                            <li><a href="/features" class="nav-link aPrincipal">Features</a></li>
+                                            <li><a href="/about" class="nav-link aPrincipal">About Us</a></li>
+                                            {{#if user}} <!-- Si el usuario esta logeado muestra el dropdown -->
+                                            <div class="dropdownContainer  d-lg-flex vertical-align">  <!--Inicio del dropdown-->
+                                             <div class="dropdown ">
+                                                 <button class="btn_nav dropdown-toggle dropdownNotes" type="button" data-toggle="dropdown">
+                                                     Recipes
+                                                     <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu "> 
+                                                        <li><a class= "nav-link aPrincipal2 text-center text-lg-left" href="/myRecipes">My recipes</a></li>
+                                                        <li><a class= "nav-link aPrincipal2 text-center text-lg-left" href="/logout">Log out</a></li>
+                                                    </ul>
+                                                </div> 
+                                              </div><!--Fin del dropdown-->
+                                            {{else}} <!-- Si el usuario no está loggeado, muestra botones de sinUp y signIn.-->
+                                            <div class="signIn-Background current "> <!--Espacio para el SignIn-->
+                                                <div class="signIn bg-company-white d-flex align-items-center">
+                                                    <li><a href="/signup">Sign Up</a></li>
+                                                    <span class="text-red">&nbsp/&nbsp</span> 
+                                                    <li><a href="/signin">Login</a></li> 
+                                                </div>
+                                            </div> <!--Fin del singIn Background-->
+                                            {{/if}}
+                                        </ul> <!--Fin de UL-->
+                                    </div> <!--End of Collapse-->
+                                </div> <!--End of container-->
+                            </nav>
+                        </div> <!--End of flex-right-->
+                    </div> <!--End of rightHeader-->
+                </div> <!--End of row-->
+            </div> <!--End of container-->
+        </div><!--End of header-->
 
 
     <!--Hbs Bodies-->
