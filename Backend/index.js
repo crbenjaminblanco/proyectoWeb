@@ -67,13 +67,13 @@ app.use((req, res, next) => {
 });
 
 //Rutas
-app.use('/api/recipes', require('./routes/recipes')); //Las rutas del servidor proporcionaran rest APIs.
+app.use('/api/recipes', require('./routes/recipes')); // Las rutas del servidor proporcionaran rest APIs.
 app.use(require('./routes/users')); // Rutas para manejar usuarios.
+app.use(require('./routes/about')); // Ruta para la pantalla about. 
 
 //Archivos Estaticos
-app.use(express.static(path.join(__dirname, 'public'))); //Envia archivos estaticos 
-                                                         //(imagenes, css, html, js, etc).
-
+app.use(express.static(path.join(__dirname, 'public'))); // Envia archivos estaticos 
+                                                         // (imagenes, css, html, js, etc).
 
 // Iniciar servidor
 app.listen(app.get('port'), () => {
