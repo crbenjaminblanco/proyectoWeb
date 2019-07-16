@@ -1,5 +1,93 @@
-.bg-company-red {
-    background-color: darkred !important;
+
+.header{
+    background-color:darkRed;
 }
+
+/*Estilos del navegador*/
+.navbar{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.cookLink {
+     color:white !important;
+     margin-top: 0px !important;
+     margin-bottom: 0px !important;
+}   
+
+.cookLink:hover{
+     opacity: 0.7 !important;
+}
+
+.nav{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+.navbar .container .navbar-nav li .aPrincipal{
+    color: white !important;
+    padding: 1.5rem !important;
+    text-align: center;
+}
+
+.navbar .container .navbar-nav li  .aPrincipal:hover{
+    color: rgba(255,255,255,0.7)  !important;
+}
+
+
+.current{
+    color: black !important;
+}
+
+/*Estilo del Sign-In*/
+.signIn{
+    display: flex;
+    padding: 0px 12px;
+    padding-bottom: 3px;
+    border-radius: 7px;
+    margin: 1.5rem ;
+    margin-bottom: calc(1.5rem - 3px);
+    text-align: center;
+}
+
+.signIn a{
+    padding-top: 0px;
+    color: darkred !important; 
+    font-weight: 300;
+}
+
+.signIn a:hover{
+    text-decoration:none;
+    color: rgba(139,0,0,0.5) !important; 
+    font-weight: 300;
+}
+
+/*Estilo del main*/
+#main{
+    clear: both;
+    background-color: lightgray !important;
+}
+
+/*Otros importantes*/
+
+.bg-company-red {
+    background-color: darkred !important; 
+}
+
+.bg-company-white {
+    background-color: white !important; 
+}
+
+.text-red {
+    color: darkred !important; 
+}
+
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+
+
+
 
 /*# sourceMappingURL=bundle.css.map*/
