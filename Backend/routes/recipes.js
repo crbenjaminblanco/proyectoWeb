@@ -7,7 +7,7 @@ const Recipe = require('../models/Recipe');
 const { isAuthenticated } = require('../helpers/auth');
 
 router.get('/', isAuthenticated, async (req, res) => { //Con get recuperamos todas las recetas.
-    const recipes = await Recipe.find() //Este find busca todas las recetas de la base de datos. 
+    const recipes = await Recipe.find({user: req.user.id}); //Este find busca todas las recetas de la base de datos asociadas a un user. 
                         //Es como un select * en SQL.
     res.json(recipes);
 });
@@ -16,7 +16,7 @@ router.post('/', isAuthenticated, async(req, res) => { //Utilizamos post para en
     const { title, ingredients, instructions } = req.body; //req body es lo que se recibe en el post.
     const imagePath = '/uploads/' + req.file.filename; // Para guardar la imagen.
     const newRecipe = new Recipe({title, ingredients, instructions, imagePath}); //creamos una nueva receta con el modelo.
-    console.log(newRecipe);
+    newRecipe.user = req.user.id;
     await newRecipe.save(); //Se guarda la receta en la base de datos MongoDB.
     res.json({message: 'Recipe saved'});
 });
