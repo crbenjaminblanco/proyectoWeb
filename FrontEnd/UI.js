@@ -26,16 +26,20 @@ class UI {
                         </div>
                         <div class="col-md-8">
                             <div class="card-block px-2">
-                               <h3 class="card-title">${recipe.title}</h3> 
-                               <h5>Ingredients:</h5>
-                               <p class="card-text">${recipe.ingredients}</p>
-                               <h5>Instructions:</h5>
-                               <p class="card-text">${recipe.instructions}</p>
-                               <a href="#" class="btn btn-primary delete" _id="${recipe._id}">
-                                <h3 class="delete" _id="${recipe._id}">🗑</h3>
-                               </a>
-                               <br>
-                               <br>
+                                <h3 class="card-title mt-1">${recipe.title}</h3> 
+                                <h5>Ingredients:</h5>
+                                <p class="card-text">${recipe.ingredients}</p>
+                                <h5>Instructions:</h5>
+                                <p class="card-text">${recipe.instructions}</p>
+                                <a href="#" class="btn btn-primary delete" _id="${recipe._id}" style="max-width:3.9rem; width:3.9rem;">
+                                    <h3 class="delete" _id="${recipe._id}">🗑</h3>
+                                </a>
+                                <a href="#" class="btn btn-success edit" data-toggle="modal" data-target="#myModal" _id="${recipe._id}" style="max-width:3.9rem; width:3.9rem;" > 
+                                    <h3 class="edit" _id="${recipe._id}">🖊</h3>
+                                </a>
+
+                                <br>
+                                <br>
                             </div>
                         </div>
                     </div>
@@ -45,6 +49,31 @@ class UI {
                 </div>
             `; // Que va a tener adentro.
             recipesCardContainer.appendChild(div);
+        });
+    }
+
+    /**
+    * Obtiene el id de la receta que selecciono el usuario, busca el id de esa receta
+    * en la base de datos y llena el edit modal con los valores de la receta que se va a editar.
+    */
+    async renderEditModal(id) {
+        const recipes = await recipeService.getRecipe();
+        recipes.forEach(recipe => {
+            if (id == recipe._id) {
+                const modalTitle = document.getElementById('modalTitle');
+                modalTitle.value = recipe.title;
+                const modalIngredients = document.getElementById('modalIngredients');
+                modalIngredients.value = recipe.ingredients;
+                const modalInstructions = document.getElementById('modalInstructions');
+                modalInstructions.value = recipe.instructions;
+                if (recipe.shared == false) {
+                    const modalPrivateRadio = document.getElementById('modalPrivateRadio');
+                    modalPrivateRadio.checked = true;
+                    const modalPublicRadio = document.getElementById('modalPublicRadio');
+                    modalPublicRadio.checked = false;
+                }
+
+            }
         });
     }
 
@@ -87,6 +116,13 @@ class UI {
     async deleteRecipe(recipeId) {
         await recipeService.deleteRecipe(recipeId);
         this.renderRecipes();
+    }
+
+    /**
+     * Metodo para editar un elemento.
+     */
+    async editRecipe(recipeId, recipe) {
+        await recipeService.editRecipe(recipeId, recipe); 
     }
 }
 

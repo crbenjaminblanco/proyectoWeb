@@ -47,11 +47,24 @@ class RecipeService {
      * @param {*} recipeId 
      */
     async deleteRecipe(recipeId) {
-        const response = await fetch(`${this.URI}/${recipeId}`, { // Esto lo envia al backend
+        const response = await fetch(`${this.URI}/${recipeId}`, { // Esto lo envia al backend.
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'DELETE'
+        });
+        const data = await response.json();
+
+        console.log(data);
+    }
+
+    /**
+     * Metodo para editar una receta. 
+     */
+    async editRecipe(recipeId, recipe) {
+        const response = await fetch(`${this.URI}/${recipeId}`, { // Esto lo envia al backend.
+            method: 'PUT',
+            body: recipe
         });
         const data = await response.json();
 

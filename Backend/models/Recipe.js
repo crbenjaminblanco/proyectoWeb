@@ -7,7 +7,7 @@ const RecipeSchema = new Schema({ //Esquema o modelo para los datos de las recet
     imagePath: {type: String}, //para las imagenes solo guardamos la dirección.
     created_at: {type: Date, default: Date.now},
     user: {type: String},
-    shared: {type: Boolean, default: false}
+    shared: {type: Boolean, required: true}
 });
 
 module.exports = model('Recipe', RecipeSchema);

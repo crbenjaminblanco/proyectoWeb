@@ -30,12 +30,63 @@
                         </label>
                     </div>
                 </div>
+                <div class="form-group mt-1">
+                    <div class="text-center">
+                        <p> Do you want to share your recipe? </p> 
+                        <label class="radio-inline"><input type="radio"  id="publicRadio" name="optradio" checked>Yes</label>
+                        <label class="radio-inline ml-2"><input type="radio" id="privateRadio" name="optradio">No</label>
+                    </div>
+                </div>
                 <button class="btn btn-primary">
                     Save changes
                 </button>
             </form>
         </div>
         <div class="col-md-8" id="recipes-cards">
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Recipe</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="modal-recipe-form" class="card card-body">
+                    <div class="form-group">
+                        <input type="text" id="modalTitle" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" id="modalIngredients" class="form-control" rows="5" cols="30" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="text" id="modalInstructions" class="form-control" rows="5" cols="30" required></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="modalImage" required>
+                            <label for="image" id="modalLabelImage" class="custom-file-label">
+                                Choose Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group mt-1">
+                        <div class="text-center">
+                            <p> Do you want to share your recipe? </p>
+                            <label class="radio-inline"><input type="radio" id="modalPublicRadio" name="optradio" checked>Yes</label>
+                            <label class="radio-inline ml-2"><input type="radio" id="modalPrivateRadio" name="optradio">No</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-success">
+                        Save changes
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

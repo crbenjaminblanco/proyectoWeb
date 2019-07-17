@@ -171,6 +171,9 @@ footer{
    background-color: rgba(126,0,0,0.7);
 }
 
+body{
+    padding-bottom: 2rem;
+}
 
 
 /*# sourceMappingURL=bundle.css.map*/
