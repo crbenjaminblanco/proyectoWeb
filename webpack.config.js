@@ -17,7 +17,8 @@ module.exports = {
     entry:{
          app: './FrontEnd/app.js',
          usersUI: './FrontEnd/usersUI.js',
-         about: './FrontEnd/about.js'
+         about: './FrontEnd/about.js',
+         homeApp: './FrontEnd/homeApp.js'
     }, // Aqui se le dice donde esta el archivo principal del proyecto.
     output: { // Aqui se le dice donde se va a colocar el codigo convertido.
         path: path.join(__dirname, 'Backend/public'),
@@ -140,7 +141,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'homePage.hbs',
             template: './Frontend/homePage.hbs',  // Se debe indicar el html del frontend que se va a pasar al backend.
-            chunks: ['about'],
+            chunks: ['homeApp'],
             minify: {
                 collapseWhitespace: true,
                 removeComments: true,

@@ -71,6 +71,7 @@ app.use((req, res, next) => {
 
 //Rutas
 app.use('/api/recipes', require('./routes/recipes')); // Las rutas del servidor proporcionaran rest APIs.
+app.use('/api/sharedRecipes', require('./routes/sharedRecipes')); //API para recetas compartidas.
 app.use(require('./routes/myRecipes'));
 app.use(require('./routes/users')); // Rutas para manejar usuarios.
 app.use(require('./routes/about')); // Ruta para la pantalla about. 

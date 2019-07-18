@@ -33,6 +33,9 @@ router.delete('/:id', isAuthenticated, async (req, res) => { // Usamos delete pa
 });
 
 router.put('/:id', isAuthenticated, async(req, res) => { // Actualiza una receta utilizando su id.
+    const oldRecipeImg = await Recipe.findById(req.params.id);
+    unlink(path.resolve('./Backend/public' + oldRecipeImg.imagePath)); // Modulo fs-extra que maneja archivos para eliminar las imagenes que quedan en el proyecto.
+
     const { title, ingredients, instructions, shared} = req.body; // req body es lo que se recibe en el post.
     const imagePath = '/uploads/' + req.file.filename; // Para guardar la imagen.
 

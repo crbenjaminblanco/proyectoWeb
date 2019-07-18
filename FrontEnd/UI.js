@@ -9,7 +9,7 @@ import { format } from 'timeago.js';
  */
 class UI {
     /**
-     * Metodo para renderizar las recetas en pantalla.
+     * Metodo para renderizar las recetas en pantalla de las personales.
      */
     async renderRecipes() {
         const recipes = await recipeService.getRecipe();

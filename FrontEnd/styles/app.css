@@ -1,3 +1,6 @@
+html {
+    height: 100%;
+}
 
 .header{
     background-color:darkRed;
@@ -116,14 +119,26 @@
     min-height: calc(99.5vh - (1.3125rem + 2 * 1.5rem)); /*Todo menos el footer y su padding, se usa 99.5 para que no aparezca el scroll*/
 }
 
-footer{
+footer {
     clear: both;
     min-height: 1.3125rem;
     padding: 1.5rem;
-    background-color: rgba(44, 56, 64, 0.97);
+    background-color: darkred;
     color: white;
     font-weight: 400;
     text-align: center;
+}
+
+footer a {
+    color: goldenrod;
+}
+
+footer a:hover {
+    color: goldenrod;
+}
+
+.content{
+    flex: 1;
 }
 
 /*Estilo del browser*/
@@ -131,7 +146,6 @@ footer{
 .titleBrowser{
    text-align: center; 
 }
-
 
 .titleBrowser img{
     width: 50%;
@@ -156,8 +170,6 @@ footer{
     font-weight: bold;
 }
 
-
-
 .principalBrowser button{
     min-width: 100%;
     width: 100%;
@@ -169,8 +181,4 @@ footer{
 
 .principalBrowser button:hover{
    background-color: rgba(126,0,0,0.7);
-}
-
-body{
-    padding-bottom: 2rem;
 }

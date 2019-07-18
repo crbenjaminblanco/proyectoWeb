@@ -6,17 +6,17 @@
             <img src="./images/LogoAppWhite.png" title="logo">
             <br>
             <br>
-            <h5 class="mt-2 h4">Find recipes and learn to cook in an innovative way!</h5>
+            <h5 class="mt-2 h4" style="color: darkred">Find recipes and learn to cook in an innovative way!</h5>
             <br>
             <br>
         </div>
         <div class="principalBrowser mt-4">
             <div class="row-md d-md-flex justify-content-center">
                 <div class="col-md-6">
-                    <input type="text" id="search" class="form-control" placeholder="Search">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search">
                 </div>
                 <div class="col-md-2 mt-2 mt-md-0 ">
-                    <button class="btn btn-primary">
+                    <button id="goButton" class="btn btn-primary">
                         GO!
                     </button>
                 </div>
@@ -24,4 +24,14 @@
         </div>
     </div>
 </div>
-
+<br>
+<br>
+<h3 id="titleResults" style="text-align: center; color:darkred; weigth:bold;">Recipes shared by our users!</h3>
+<br>
+<br>
+<div class="container">
+    <div class="card-columns" style="column-count: 2;">
+        <div id="home-recipes-cards">
+        </div>
+    </div>
+ </div>
